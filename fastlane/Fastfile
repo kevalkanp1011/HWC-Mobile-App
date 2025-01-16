@@ -9,7 +9,9 @@ platform :android do
       task: "assemble#{options[:variant]}Debug"
     )
 
-    puts "Testers group: #{ENV['TESTER_GROUPS']}"
+    puts "Tester groups is: #{ENV['TESTER_GROUPS']}"
+    puts "FIREBASE_CLI_TOKEN is: #{ENV['FIREBASE_CLI_TOKEN']}"
+    puts "FIREBASE_APP_ID is: #{ENV['FIREBASE_APP_ID']}"
 
     # Distribute to Firebase App Distribution for Stag and UAT
     firebase_app_distribution(
