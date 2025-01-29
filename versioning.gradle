@@ -13,13 +13,3 @@ ext {
     }
 
 }
-
-
-tasks.register('exportVersionCode') {
-    doLast {
-        def versionCode = buildVersionCode()
-        rootProject.file("version/version.properties").withWriterAppend { writer ->
-            writer.write("\nVERSION_CODE=${versionCode}\n")
-        }
-    }
-}
