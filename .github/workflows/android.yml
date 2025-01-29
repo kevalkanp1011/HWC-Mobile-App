@@ -19,11 +19,11 @@ jobs:
     strategy:
       matrix:
         config:
-          - environment: SAKSHAM_STAG
-            variant: sakshamStag
+          - environment: HLW_STAG
+            variant: staging
             build_type: debug
-          - environment: SAKSHAM_UAT
-            variant: sakshamUat
+          - environment: HLW_UAT
+            variant: uat
             build_type: debug
     uses: ./.github/workflows/build-distribute.yml
     with:

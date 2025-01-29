@@ -11,4 +11,15 @@ ext {
         rootProject.file("version/version.properties").withInputStream { props.load(it) }
         return props.getProperty("VERSION")
     }
+
+}
+
+
+tasks.register('exportVersionCode') {
+    doLast {
+        def versionCode = buildVersionCode()
+        rootProject.file("version/version.properties").withWriterAppend { writer ->
+            writer.write("\nVERSION_CODE=${versionCode}\n")
+        }
+    }
 }
