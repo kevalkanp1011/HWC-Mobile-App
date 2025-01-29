@@ -45,7 +45,7 @@ jobs:
       - name: Set up ruby env
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.6
+          ruby-version: 2.7.2
           bundler-cache: true
 
       - name: Verify Ruby installation
