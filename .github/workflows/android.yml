@@ -22,9 +22,9 @@ jobs:
           - environment: HLW_STAG
             variant: staging
             build_type: debug
-          - environment: HLW_UAT
-            variant: uat
-            build_type: debug
+#          - environment: HLW_UAT
+#            variant: uat
+#            build_type: debug
     uses: ./.github/workflows/build-distribute.yml
     with:
       environment: ${{ matrix.config.environment }}
