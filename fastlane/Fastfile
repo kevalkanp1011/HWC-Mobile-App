@@ -5,17 +5,17 @@ platform :android do
   desc "Build and Distribute Debug APK to Firebase"
     lane :build_and_distribute_debug do |options|
 
-#      latest_release = firebase_app_distribution_get_latest_release(
-#         app: "1:946494566912:android:9c94902e3b20541a42dee5",
-#         service_credentials_file: "firebase_credentials.json"
-#      )
-#      new_version_code = latest_release[:buildVersion].to_i + 1
-#      current_version_name = android_get_version_name
-#      new_version_name = "#{new_version_code}.0.0"
-#
-#       File.open("../version/version.properties", "w") do |file|
-#           file.write("VERSION=#{new_version_name}")
-#       end
+     latest_release = firebase_app_distribution_get_latest_release(
+        app: ENV['FIREBASE_APP_ID'],
+        service_credentials_file: "firebase_credentials.json"
+     )
+     new_version_code = latest_release[:buildVersion].to_i + 1
+     current_version_name = android_get_version_name
+     new_version_name = "#{new_version_code}.0.0"
+
+      File.open("../version/version.properties", "w") do |file|
+          file.write("VERSION=#{new_version_name}")
+      end
 
       # Build the debug variant
       gradle(
@@ -24,7 +24,7 @@ platform :android do
 
       # Distribute to Firebase App Distribution for Stag and UAT
       firebase_app_distribution(
-        app: "1:946494566912:android:9c94902e3b20541a42dee5",
+        app: ENV['FIREBASE_APP_ID'],
         service_credentials_file: "firebase_credentials.json",
         release_notes_file: "FirebaseAppDistributionConfig/release_notes.txt",
         groups_file: "FirebaseAppDistributionConfig/groups.txt",
